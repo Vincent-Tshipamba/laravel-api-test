@@ -16,7 +16,7 @@ class UserController extends Controller
         $users = User::all();
 
         // On retourne les informations des utilisateurs en JSON
-        return response()->json($users);
+        return UserResource::collection($users);
     }
 
     public function show(User $user)
