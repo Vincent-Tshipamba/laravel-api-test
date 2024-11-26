@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use OpenApi\Annotations as OA;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -10,6 +11,32 @@ use App\Http\Requests\UserStoreRequest;
 
 class UserController extends Controller
 {
+    /**
+     * @OA\Get(
+     *      path="/users",
+     *      operationId="getUsersList",
+     *      tags={"Users"},
+     *      summary="Afficher la liste des utilisateurs",
+     *      description="Api qui nous retourne la liste des utilisateurs",
+     *      security={{"bearerAuth":{}}},
+     *      @OA\Response(
+     *          response=200,
+     *          description="Successful operation",
+     *       ),
+     *      @OA\Response(
+     *          response=401,
+     *          description="Unauthenticated",
+     *      ),
+     *      @OA\Response(
+     *          response=403,
+     *          description="Forbidden"
+     *      ),
+     *      @OA\Response(
+     *          response=404,
+     *          description="Not Found"
+     *      )
+     *     )
+     */
     public function index()
     {
         // On récupère tous les utilisateurs
